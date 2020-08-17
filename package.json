@@ -1,0 +1,10 @@
+{
+	"name": "aulaVirtual",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "*",
+		"log": "^6.0.0",
+		"loglevel": "^1.6.8",
+		"socket.io": "*"
+	}
+}

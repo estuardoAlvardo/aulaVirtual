@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AulaVirtual</title>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<h3>Emitir video</h3>
+
+	<video src="" id="video" style="width: 680px; height: 320px; border: 1px solid red" autoplay="true"></video>
+	<canvas id="preview" style="border:1px solid green; display: none"></canvas>
+	<div id="logger"></div>
+
+<script type="text/javascript">
+	var canvas = document.getElementById('preview');
+	var context = canvas.getContext('2d');
+
+	canvas.width = 800;
+	canvas.height =600;
+
+	context.width = canvas.width;
+	context.height = canvas.height;
+
+	var video = document.getElementById("video");
+
+	var socket = io();
+
+	function looger(msg){
+		$('#logger').text(msg);
+	}
+
+	function loadCam(stream){
+		video.srcObject = stream;
+
+console.log('Camara Conectada [OK]');
+	}
+
+	function loadFile(){
+		console.log('camara no conectada por favor verificar la camara!');
+	}
+
+
+	function videEmitir(video, context){
+		context.drawImage(video,0,0,context.width,context.height);
+		emitiendo = canvas.toDataURL('image/png');
+	    socket.emit('stream', canvas.toDataURL('image/png'));
+
+
+	}
+
+	$(function(){
+		navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMEdia);
+
+		if(navigator.getUserMedia){
+
+			//parametros media a enviar, 
+			navigator.getUserMedia({video:true,audio:true},loadCam,loadFile);
+		}
+		setInterval(function(){
+			videEmitir(video,context);
+		},60);
+	});
+
+</script>
+	
+	
+</body>
+
+
+</html>
