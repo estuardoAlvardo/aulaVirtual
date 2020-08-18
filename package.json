@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scrips":{
 		"start": "node aulaVirtual/public/index.html",
-		"dev" "nodemon 	./aulaVirtual"
+		"dev" "nodemon ./aulaVirtual"
 	},
 	"dependencies": {
 		"express": "*",
