@@ -48,6 +48,7 @@ console.log('Camara Conectada [OK]');
 		context.drawImage(video,0,0,context.width,context.height);
 		emitiendo = canvas.toDataURL('image/png');
 	    socket.emit('stream', canvas.toDataURL('image/png'));
+	   // console.log(canvas.toDataURL('image/png'));
 
 
 	}
@@ -58,11 +59,11 @@ console.log('Camara Conectada [OK]');
 		if(navigator.getUserMedia){
 
 			//parametros media a enviar, 
-			navigator.getUserMedia({video:true,audio:true},loadCam,loadFile);
+			navigator.getUserMedia({video:true},loadCam,loadFile);
 		}
 		setInterval(function(){
 			videEmitir(video,context);
-		},60);
+		},100);
 	});
 
 </script>
