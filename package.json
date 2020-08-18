@@ -1,6 +1,9 @@
 {
 	"name": "aulaVirtual",
 	"version": "0.0.1",
+	"scrips":{
+		"start": "node public/index.html"
+	},
 	"dependencies": {
 		"express": "*",
 		"log": "^6.0.0",
