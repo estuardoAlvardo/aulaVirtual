@@ -2,8 +2,8 @@
 	"name": "aulaVirtual",
 	"version": "0.0.1",
 	"scrips":{
-		"start": "node public/index.html",
-		"dev" "nodemon 	app.js"
+		"start": "node aulaVirtual/public/index.html",
+		"dev" "nodemon 	./aulaVirtual"
 	},
 	"dependencies": {
 		"express": "*",
