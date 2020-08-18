@@ -2,7 +2,7 @@
 	"name": "aulaVirtual",
 	"version": "0.0.1",
 	"scrips":{
-		"start": "node aulaVirtual/app.js"
+		"start": "node app.js"
 	},
 	"dependencies": {
 		"express": "*",
